@@ -9,7 +9,8 @@ export const Progress = ({ value, label, ...props }: ProgressProps) => {
       <div className="relative h-3 w-full rounded-full">
         <div className="absolute left-0 top-0 h-3 w-full rounded-full bg-secondary-background" />
         <div
-          className={`absolute left-0 top-0  h-3 bg-highlight w-[${value}%] rounded-full`}
+          className="absolute left-0 top-0  h-3 rounded-full  bg-highlight"
+          style={{ width: `${value}%` }}
         />
       </div>
       <div className="mt-2 flex flex-col items-center justify-center">
