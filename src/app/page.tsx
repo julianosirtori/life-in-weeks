@@ -4,15 +4,10 @@ import { Year } from "@/components/Year";
 import { getNumberOfWeeks } from "@/lib/dayjs";
 import { ArrowDownIcon, ArrowRightIcon } from "@radix-ui/react-icons";
 import { useMemo } from "react";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
 
 export default function Home() {
-  // only show years that are multiple of 5
-  const showYear = (year: number): number | undefined => {
-    if (year % 5 === 0) {
-      return year;
-    }
-  };
-
   const data = useMemo(() => {
     const livedWeeks = getNumberOfWeeks(process.env.BIRTHDAY as string);
     const livedYears = Math.floor(livedWeeks / 52);
@@ -35,13 +30,14 @@ export default function Home() {
 
   return (
     <main className="m-auto max-w-screen-lg">
-      <section className="mt-4 flex flex-col gap-8 px-2 lg:flex-row lg:justify-between">
-        <p className="max-w-lg text-white ">
-          Cada ponto representa uma semana, passe o mouse sobre os pontos
-          coloridos, para ver algum acontecimento especial, para mudar a
-          categoria dos pontos, mude no select abaixo.
-        </p>
+      <Link
+        href={`/#year-${data.livedYears}`}
+        className="fixed bottom-6 right-6 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white"
+      >
+        <ChevronDownIcon />
+      </Link>
 
+      <section className="mt-4 flex flex-col gap-8 px-2 lg:flex-row lg:justify-between">
         <div className="flex flex-1 flex-col gap-6">
           <div className="flex flex-row justify-between gap-3">
             <KPI label="Days left" value={100 * 52 * 7 - data.livedWeeks * 7} />
@@ -63,17 +59,17 @@ export default function Home() {
           </div>
           <div className="flex flex-col gap-4 p-4 lg:gap-1">
             {Array.from({ length: data.livedYears }).map((_, index) => (
-              <Year year={showYear(index + 1)} fillWeeks={52} key={index} />
+              <Year year={index + 1} fillWeeks={52} key={index} />
             ))}
             {data.livedWeeksRest > 0 && (
               <Year
-                year={showYear(data.livedYears + 1)}
+                year={data.livedYears + 1}
                 fillWeeks={data.livedWeeksRest}
               />
             )}
             {Array.from({ length: data.yearsLeft }).map((_, index) => (
               <Year
-                year={showYear(index + 1 + (data.livedYears - 1))}
+                year={index + 1 + (data.livedYears - 1)}
                 fillWeeks={0}
                 key={index}
               />
