@@ -10,3 +10,8 @@
   --color-highlight: #1E8543;
 }
 
+@layer base {
+  html {
+    scroll-behavior: smooth !important;
+  }
+}
