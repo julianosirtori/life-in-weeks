@@ -7,7 +7,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Life in Weeks",
-  description: "Life in Weeks is a dash to show me life in weeks.",
+  description:
+    "Life in weeks is a project to help you to see how much time you have left in your life.",
 };
 
 export default function RootLayout({
