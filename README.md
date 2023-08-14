@@ -93,6 +93,10 @@ To get a local copy up and running follow these simple example steps.
 
 <!-- ROADMAP -->
 
+### Deploy it on Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fjulianosirtori%2Flife-in-weeks&env=BIRTHDAY&envDescription=Your%20Birthday)
+
 ## Roadmap
 
 - [ ] Add E2E Tests
